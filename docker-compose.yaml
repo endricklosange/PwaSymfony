@@ -31,6 +31,20 @@ services:
     networks:
       - dev
 
+  # Define the phpMyAdmin service.
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    container_name: phpmyadmin_docker
+    ports:
+      - "8081:80"
+    environment:
+      PMA_HOST: db
+      PMA_PORT: 3305
+    depends_on:
+      - db
+    networks:
+      - dev
+
 networks:
   # Define the "dev" network to allow communication between services.
   dev:
